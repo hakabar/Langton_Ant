@@ -12,6 +12,10 @@ In this code you can choose from 4 different boards/maps:
   (3) Black pyramid on the side --> The board is composed by white tiles and a black pyramid on the left side
   (4) White pyramid on the top  --> The board is composed by black tiles and a white inverted pyramid on the top
 
-In function of the shape of the board, the Langton's ant will behave differently
+In function of the board selected, the Langton's ant will move differently.
+
+The configLangAnt.py contain the values of different parameters that the user can update to fit his/her needs.
+
+WARNINIG: It uses the PyGame package
 
 For more information about the Langton's Ant game, check its Wikipedia page (https://en.wikipedia.org/wiki/Langton%27s_ant)
