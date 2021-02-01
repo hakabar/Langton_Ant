@@ -120,7 +120,7 @@ def draw_random_board(bckgndSurface):
     #Map with the color values in each row for the board 1st group == row 1  subets num X == row X)   
     boardMap= [[0]*cfg.N for i in range(cfg.N)]
     rowAndColumn=[]     #=[[x values][y values]] == position (3,2) [[...,3][..,2]]
-    amountToFill= input('total of black tiles: ')
+    amountToFill= int(input('total of black tiles: '))
     
     pg.display.set_caption('Surface random board')
             
@@ -130,7 +130,7 @@ def draw_random_board(bckgndSurface):
             #Fill the board with black squares at random positions
             x= np.random.randint(0, cfg.N-1)    #*cfg.tile_sz             
             y= np.random.randint(0, cfg.N-1)    #*cfg.tile_sz    
-            if boardMap[x][y] == 0:
+            if boardMap[x][y] == 0:	
                  #Create a square surface
                 surface= pg.Surface((cfg.tile_sz, cfg.tile_sz))
                 surface.fill(cfg.colors[1])
@@ -158,8 +158,8 @@ def create_ant(board):
 #Fct to update the ant and the board 
 def update_game(pos, ant, bckgndBoard, cMap):
     lookingAt= cfg.looking.index(pos[2])    #find the position in looking of the direction we are looking at (0 for LEFT, 1 for UP...)
-    temp_X= pos[0]/cfg.tile_sz
-    temp_Y= pos[1]/cfg.tile_sz 
+    temp_X= round(pos[0]/cfg.tile_sz)
+    temp_Y= round(pos[1]/cfg.tile_sz)
     #print('temp x and temp y: (%s,%s) --len(cMap): %s -- len(cMap[0]): %s'%(temp_X, temp_Y, len(cMap), len(cMap[0])))
     if cMap[temp_X][temp_Y] == 0:
         #the ant is in a white cell
@@ -262,12 +262,12 @@ def reach_border(pos):
 
 # Create map in function of the option selected
 print ("MAP OPTIONS")
-print (' (0) Random board')
+print (' (0) Black board')
 print (' (1) White board')
 print (' (2) Chess board ')
 print (' (3) draw_blackPyramidSide_board ')
 print (' (4)  draw_whitePyramidTop_board ')
-option= input('Choose map option:')
+option= int(input('Choose map option:'))
 
 pg.init()
 colorMap=[]
@@ -307,6 +307,6 @@ while (True):
                 time.sleep(0.02)
         totalIter+=i    
         print('Total iterations: %s '%totalIter)
-        guiCmd= input('Press: (0) for quit or (1) for Continue ')
+        guiCmd= int(input('Press: (0) for quit or (1) for Continue '))
     else:
         sys.exit()
